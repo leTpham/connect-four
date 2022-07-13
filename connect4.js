@@ -24,7 +24,6 @@ function makeBoard(width = WIDTH, height = HEIGHT) {
       board[y].push(null);
     }
   }
-  debugger;
 }
 
 
