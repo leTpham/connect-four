@@ -17,14 +17,16 @@ let board = []; // array of rows, each row is array of cells  (board[y][x])
  *    board = array of rows, each row is array of cells  (board[y][x])
  */
 
-function makeBoard() {
-  for (let y = 0; y < HEIGHT; y++){
+function makeBoard(width = WIDTH, height = HEIGHT) {
+  for (let y = 0; y < height; y++){
     board.push([]);
-    for (let x = 0; x < WIDTH; x++){
+    for (let x = 0; x < width; x++){
       board[y].push(null);
     }
   }
+  debugger;
 }
+
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
 
@@ -40,7 +42,7 @@ function makeHtmlBoard() {
 
   //add a cell in the header for each column to the dom, add id's
   for (let x = 0; x < WIDTH; x++) {
-    let headCell = document.createElement("td");
+    const headCell = document.createElement("td");
     headCell.setAttribute("id", x);
     top.append(headCell);
   }
@@ -51,12 +53,12 @@ function makeHtmlBoard() {
   // uses WIDTH to create table cells for each row
   for (let y = 0; y < HEIGHT; y++) {
     //Create a table row element and assign to a "row" variable
-    let tableRow = document.createElement("tr");
+    const tableRow = document.createElement("tr");
 
 
     for (let x = 0; x < WIDTH; x++) {
       // Create a table cell element and assign to a "cell" variable
-      let cell = document.createElement("td");
+      const cell = document.createElement("td");
 
       // add an id, y-x, to the above table cell element
       // you'll use this later, so make sure you use y-x
@@ -74,6 +76,9 @@ function makeHtmlBoard() {
 
 function findSpotForCol(x) {
   // TODO: write the real version of this, rather than always returning 5
+
+
+
   return 5;
 }
 
@@ -81,6 +86,9 @@ function findSpotForCol(x) {
 
 function placeInTable(y, x) {
   // TODO: make a div and insert into correct table cell
+  const gamePiece = document.createElement("div");
+  gamePiece.classList.add("piece", `p${currPlayer}`);
+  document.getElementById(`${y}-${x}`).append(gamePiece);
 }
 
 /** endGame: announce game end */
