@@ -109,8 +109,9 @@ function handleClick(evt) {
   }
 
   // place piece in board and add to HTML table
-  // TODO: add line to update in-memory board
+  //FIXME: add line to update in-memory board
   placeInTable(y, x);
+  board[y][x] = currPlayer;
 
   // check for win
   if (checkForWin()) {
@@ -118,10 +119,16 @@ function handleClick(evt) {
   }
 
   // check for tie
-  // TODO: check if all cells in board are filled; if so call, call endGame
+  // check if all cells in board are filled; if so call, call endGame
+    if (board.every(row => row.every(col => col !== null))) {
+      endGame("This Game is a Tie");
+
+    }
 
   // switch players
-  // TODO: switch currPlayer 1 <-> 2
+  // switch currPlayer 1 <-> 2
+    currPlayer === 1? currPlayer = 2 : currPlayer = 1;
+    document.getElementById("playerTurn").innerText = `Player ${currPlayer}'s Turn`;
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */

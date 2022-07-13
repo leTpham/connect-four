@@ -16,7 +16,7 @@
   border-radius: 50%;
 }
 
-/* TODO: make pieces red/blue,  depending on player 1/2 piece */
+/*make pieces red/blue,  depending on player 1/2 piece */
 .p1 {
   background-color: tomato;
 }
