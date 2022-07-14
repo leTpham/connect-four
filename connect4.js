@@ -75,9 +75,14 @@ function makeHtmlBoard() {
 
 function findSpotForCol(x) {
   // TODO: write the real version of this, rather than always returning 5
-
-
-
+  if (board[0][x]!==null){
+    return null;
+  }
+  for (let i = 0; i < board.length; i++){
+    if (board[i][x]!== null){
+      return i-1;
+    }
+  }
   return 5;
 }
 
@@ -100,10 +105,10 @@ function endGame(msg) {
 
 function handleClick(evt) {
   // get x from ID of clicked cell
-  var x = +evt.target.id;
+  let x = +evt.target.id;
 
   // get next spot in column (if none, ignore click)
-  var y = findSpotForCol(x);
+  let y = findSpotForCol(x);
   if (y === null) {
     return;
   }
